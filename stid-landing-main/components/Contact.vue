@@ -1,42 +1,108 @@
 <template>
   <Transition name="show">
-    <div
-      class="fixed contact top-0 left-0 w-full items-center"
-      v-show="show"
-    >
+    <div class="fixed contact top-0 left-0 w-full items-center" v-show="show">
       <div class="inner px-[60px] py-5">
         <header class="contact__header flex justify-end">
-          <CtaIcon @click="close" :logoName="'close-contact.svg'" :isText="false" class="shrink-0 contact__close" :isWhite="true" />
+          <CtaIcon
+            @click="close"
+            :logoName="'close-contact.svg'"
+            :isText="false"
+            class="shrink-0 contact__close"
+            :isWhite="true"
+          />
         </header>
         <section class="mobile:my-[0px]">
-          <Cross ref="cross"/>
-          <h4 class="organettoLightUltra mobile:text-[50px] desktop:text-[80px] uppercase leading-normal">Let’s talk</h4>
-          <h5 class="mb-[40px] mobile:my-[0px] mobile:mb-[30px] opacity-50 montserratRegular">Let us know more about you and your<br/>security needs.</h5>
+          <Cross ref="cross" />
+          <h4
+            class="organettoLightUltra mobile:text-[50px] desktop:text-[80px] uppercase leading-normal"
+          >
+            Let’s talk
+          </h4>
+          <h5
+            class="mb-[40px] mobile:my-[0px] mobile:mb-[30px] opacity-50 montserratRegular"
+          >
+            Let us know more about you and your<br />security needs.
+          </h5>
 
-          <form @submit="onSubmit">
+          <form
+            action="https://stid.us12.list-manage.com/subscribe/post?u=a2193978cf6e4420e40ea0793&amp;id=7cefdaea3e&amp;f_id=001646e0f0"
+            method="post"
+            target="_blank"
+            @submit="onSubmit"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+          >
             <div class="flex gap-[10px] mobile:block">
               <div class="input w-1/2 mobile:w-full">
-                <input class="montserratRegular" type="text" required pattern=".{2,}" title="Minimum 2 characters" placeholder="Your name" v-model="name" />
+                <input
+                  class="montserratRegular"
+                  type="text"
+                  required
+                  pattern=".{2,}"
+                  title="Minimum 2 characters"
+                  placeholder="Your name"
+                  name="FNAME"
+                  v-model="name"
+                />
               </div>
               <div class="input w-1/2 mobile:w-full mobile:mt-[20px]">
-                <input class="montserratRegular" type="text" required pattern=".{2,}" title="Minimum 2 characters" v-model="company" placeholder="Your company name" />
+                <input
+                  class="montserratRegular"
+                  type="text"
+                  required
+                  pattern=".{2,}"
+                  title="Minimum 2 characters"
+                  name="LNAME"
+                  v-model="company"
+                  placeholder="Your company name"
+                />
               </div>
             </div>
             <div class="flex mt-[20px]">
               <div class="input w-full">
-                <input class="montserratRegular" type="email" required placeholder="Your email address" v-model="email" />
+                <input
+                  class="montserratRegular"
+                  type="email"
+                  required
+                  placeholder="Your email address"
+                  name="EMAIL"
+                  v-model="email"
+                />
               </div>
             </div>
             <div class="flex mt-[20px]">
               <div class="input textarea w-full">
-                <textarea class="montserratRegular" required placeholder="Describe" v-model="message"></textarea>
+                <textarea
+                  class="montserratRegular"
+                  required
+                  placeholder="Describe"
+                  name="MESSAGE"
+                  v-model="message"
+                ></textarea>
               </div>
             </div>
             <div class="flex mt-[20px] mb-[20px]">
-              <CtaButton type="submit" :isText="true" :isWhite="false" :text="'Send'" :displayPoint="true"  />
+              <CtaButton
+                type="submit"
+                :isText="true"
+                :isWhite="false"
+                :text="'Send'"
+                :displayPoint="true"
+              />
             </div>
-            <p v-if="success" class="mt-2 montserratRegular text-[12px]">Your message has been sent successfully. Thank you for reaching out. We'll get back to you shortly.</p>
-            <p v-if="error" class="mt-2 text-red-500 montserratRegular text-[12px]">Oops! It seems there was an error while sending your message. Please try again, and if the issue persists, reach out to our support team for assistance. Thank you for your patience.</p>
+            <p v-if="success" class="mt-2 montserratRegular text-[12px]">
+              Your message has been sent successfully. Thank you for reaching
+              out. We'll get back to you shortly.
+            </p>
+            <p
+              v-if="error"
+              class="mt-2 text-red-500 montserratRegular text-[12px]"
+            >
+              Oops! It seems there was an error while sending your message.
+              Please try again, and if the issue persists, reach out to our
+              support team for assistance. Thank you for your patience.
+            </p>
           </form>
         </section>
         <div class="contact__bg"></div>
@@ -47,79 +113,56 @@
 </template>
 
 <script>
-import { useBus } from '../utils/bus.js';
+import { useBus } from "../utils/bus.js";
 import Scroll from "../utils/scroll/Scroll.js";
-import Cross from './sub/Cross.vue';
+import Cross from "./sub/Cross.vue";
 import CtaButton from "./sub/CtaButton.vue";
-import CtaIcon from './sub/CtaIcon.vue';
-const bus = useBus()
+import CtaIcon from "./sub/CtaIcon.vue";
+const bus = useBus();
 
 export default {
   components: { CtaButton, CtaIcon, Cross },
-  data(){
+  data() {
     return {
       scroll: new Scroll(),
       name: undefined,
       company: undefined,
       email: undefined,
       message: undefined,
-      success : false,
+      success: false,
       error: false,
       show: false,
       currentHash: window.location.hash,
-    }
+    };
   },
   methods: {
     close() {
-      bus.emit('closeContact');
+      bus.emit("closeContact");
     },
-    onSubmit(e){
+    onSubmit(e) {
       e.preventDefault();
       this.sendEmail(this.email, this.name, this.company, this.message);
     },
     async sendEmail(email, name, company, message) {
-      try {
-        const response = await fetch('https://stid.neuviemepage.com/api/send/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ name: name, company: company, email: email, message: message }),
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log(data)
-        if(data.Sent[0].MessageID){
-          this.success = true;
-        } else {
-          if(data.message === 400) {
-            this.alreadySubscribed = true;
-          } else {
-            this.error = true;
-          }
-        }
-      } catch (error) {
-        this.error = true;
-      }
-    }
+      // Mailchimp will handle the email sending process
+      this.success = true;
+    },
   },
   mounted() {
-    this.$refs.cross.intersect(true, 0)
-    bus.on('openContact', () => {
-      this.scroll.lock(true)
+    this.$refs.cross.intersect(true, 0);
+    bus.on("openContact", () => {
+      this.scroll.lock(true);
       this.show = true;
     });
-    bus.on('closeContact', () => {
-      this.scroll.lock(false)
+    bus.on("closeContact", () => {
+      this.scroll.lock(false);
       this.show = false;
     });
   },
   beforeUnmount() {
-    window.removeEventListener('hashchange', this.handleHashChange);
+    window.removeEventListener("hashchange", this.handleHashChange);
   },
-}
+};
 </script>
 
 <style scoped>
@@ -140,12 +183,12 @@ export default {
   height: 100%;
   top: 0;
   right: 0;
-  border-left: 1px solid #0088EB;
+  border-left: 1px solid #0088eb;
 }
 
 @media screen and (max-width: 640px) {
   .contact .inner {
-    border-left:none;
+    border-left: none;
   }
 }
 
@@ -158,7 +201,7 @@ export default {
 }
 .contact__bg {
   transform: matrix(1, 0, 0, -1, 0, 0);
-  background: linear-gradient(180deg, #03080D 0%, #08131F 100%);
+  background: linear-gradient(180deg, #03080d 0%, #08131f 100%);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -180,7 +223,7 @@ export default {
 .contact .input {
   box-sizing: border-box;
   height: 50px;
-  background: #050C13;
+  background: #050c13;
   border-radius: 10px;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
   position: relative;
@@ -195,10 +238,11 @@ export default {
   }
 }
 
-.input input, .input textarea {
+.input input,
+.input textarea {
   width: 100%;
   height: 100%;
-  background: #050C13;
+  background: #050c13;
   border-radius: 10px;
   padding: 10px;
 }
@@ -207,17 +251,22 @@ export default {
   outline: 0;
 }
 .contact .input:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-    z-index: -1;
-    margin: -1px;
-    border-radius: inherit;
-    background: linear-gradient(90deg, rgba(0, 136, 235, 0.7) 0%, rgba(0, 233, 163, 0.7) 100%),linear-gradient(0deg, #050C13, #050C13);
-  }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 136, 235, 0.7) 0%,
+      rgba(0, 233, 163, 0.7) 100%
+    ),
+    linear-gradient(0deg, #050c13, #050c13);
+}
 
 .show-enter-active,
 .show-leave-active {
@@ -226,13 +275,14 @@ export default {
 
 .show-enter-active .inner,
 .show-leave-active .inner {
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
 .show-enter-active .contact__fullbg,
 .show-leave-active .contact__fullbg {
-  transition:  opacity 0.75s ease-out;
+  transition: opacity 0.75s ease-out;
   will-change: opacity;
 }
 
@@ -244,5 +294,15 @@ export default {
 .show-enter-from .contact__fullbg,
 .show-leave-to .contact__fullbg {
   opacity: 0;
+}
+
+.show-enter-to .inner,
+.show-leave-from .inner {
+  transform: translateX(0);
+  opacity: 1;
+}
+.show-enter-to .contact__fullbg,
+.show-leave-from .contact__fullbg {
+  opacity: 1;
 }
 </style>
