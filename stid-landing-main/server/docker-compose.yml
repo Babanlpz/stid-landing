@@ -1,0 +1,12 @@
+# Use root/example user/password credentials
+version: '3.1'
+
+services:
+  stid-php-apache:
+    container_name: stid-php-apache
+    build:
+      context: ./php
+    ports:
+        - '8080:80'
+    volumes:
+      - ./www:/var/www/html

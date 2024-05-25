@@ -1,0 +1,40 @@
+#scrollBar
+{
+  z-index: 50;
+  position: fixed;
+
+  right: 0;
+
+  /* background-color: rgb(255, 255, 255); */
+
+  background: linear-gradient(180deg, rgba(0, 136, 235, 0.7) -11.87%, rgba(0, 233, 163, 0.7) 100%);
+  /* mix-blend-mode: difference; */
+  cursor: pointer;
+  transition: height 300ms, opacity 300ms;
+
+  opacity: 0.3;
+}
+#scrollBar:hover
+{
+  opacity: 1 !important;
+}
+@media screen and (orientation: landscape) {
+  #scrollBar
+  {
+    width: 0.8vh;
+  }
+}
+@media screen and (orientation: portrait) {
+  #scrollBar
+  {
+    width: 1.5vw;
+  }
+}
+
+/* Hide Scroll Bar  */
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

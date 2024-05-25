@@ -1,0 +1,214 @@
+{
+  "sheetsById": {
+    "STid": {
+      "staticOverrides": {
+        "byObject": {
+          "spectre": {
+            "position": {
+              "x": 2.0900000000000007
+            },
+            "state": "on"
+          },
+          "spectre / matrix": {
+            "position": {
+              "x": 5.980000000000021,
+              "y": 2.7,
+              "z": -1.8600000000000003
+            },
+            "rotation": {
+              "y": 0.9599999999999995
+            }
+          },
+          "undefined / glow / matrix": {
+            "position": {
+              "x": -0.4700000000000001
+            },
+            "rotation": {
+              "y": -1.5600000000000012
+            }
+          },
+          "architect": {
+            "offTextureOpacity": 1,
+            "blueTextureOpacity": 0,
+            "greenTextureOpacity": 0,
+            "state": "green"
+          },
+          "architect / glow / matrix": {
+            "rotation": {
+              "y": -1.57
+            },
+            "position": {
+              "x": 0.1
+            }
+          },
+          "architect / glow / material": {
+            "color": {
+              "r": 1,
+              "g": 0,
+              "b": 0.058823529411764705,
+              "a": 1
+            }
+          },
+          "architect / matrix": {
+            "position": {
+              "x": 23.65000000000001,
+              "y": 4,
+              "z": 3.750000000000003
+            },
+            "rotation": {
+              "y": 0
+            }
+          },
+          "architect / glow / glow-blue / material": {
+            "color": {
+              "r": 0,
+              "g": 0.5333333333333333,
+              "b": 0.9215686274509803,
+              "a": 1
+            },
+            "opacity": 0.5
+          },
+          "spectre / glow / matrix": {
+            "rotation": {
+              "y": 1.57
+            },
+            "position": {
+              "z": 0.09999999999999996,
+              "x": -0.07999999999999999,
+              "y": -0.13
+            },
+            "scale": {
+              "x": 0.3,
+              "y": 0.3,
+              "z": 0.1
+            }
+          },
+          "spectre / glow / material": {
+            "opacity": 0.2,
+            "color": {
+              "r": 0,
+              "g": 0.5333333333333333,
+              "b": 0.9215686274509803,
+              "a": 1
+            }
+          },
+          "architect / camera / matrix": {
+            "position": {
+              "x": 0,
+              "z": -0.1
+            }
+          },
+          "spectre / camera / matrix": {
+            "position": {
+              "x": 0,
+              "z": -0.25
+            }
+          },
+          "camera": {
+            "focus": "architect",
+            "controls": true
+          },
+          "phone / matrix": {
+            "position": {
+              "x": 18.17999999999988,
+              "z": -0.267,
+              "y": 2.605
+            },
+            "rotation": {
+              "y": 0,
+              "z": -0.5400000000000003,
+              "x": 0
+            }
+          },
+          "phone / camera / matrix": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": -0.11
+            }
+          },
+          "spectre / camera / position": {
+            "position": {
+              "x": -0.5
+            }
+          },
+          "architect / camera / position": {
+            "position": {
+              "x": -0.25
+            }
+          },
+          "phone / camera / position": {
+            "position": {
+              "x": -0.25
+            }
+          },
+          "architect / glow / glow-blue / matrix": {
+            "scale": {
+              "x": 0.5,
+              "y": 0.5
+            }
+          },
+          "architect / glow / glow-green / matrix": {
+            "scale": {
+              "x": 0.5,
+              "y": 0.5
+            }
+          },
+          "architect / glow / glow-green / material": {
+            "opacity": 0.5
+          },
+          "postprocessing / bloom": {
+            "intensity": 1,
+            "radius": 0.99,
+            "width": 1024,
+            "resolution": 1024
+          },
+          "phone / camera / mobile / matrix": {
+            "position": {
+              "y": -0.05
+            }
+          },
+          "architect / camera / mobile / matrix": {
+            "position": {
+              "y": -0.1
+            }
+          },
+          "spectre / camera / mobile / matrix": {
+            "position": {
+              "y": -0.21
+            }
+          },
+          "spectre / camera / mobile / position": {
+            "position": {
+              "x": -0.75
+            }
+          },
+          "architect / camera / mobile / position": {
+            "position": {
+              "x": -0.4
+            }
+          },
+          "phone / camera / mobile / position": {
+            "position": {
+              "x": -0.25
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitionVersion": "0.4.0",
+  "revisionHistory": [
+    "9GlhntYvLZyAdEBJ",
+    "xiWNaUAwyoa1PEFP",
+    "02R1dLQzkSYx2F6i",
+    "iS2wL_L11SNEQwR-",
+    "sEcL6jjIryRkXrKC",
+    "riNirrML2XriBBcP",
+    "7wFX_qkJQn2VDM_g",
+    "2bAkeSPYxPScy9FH",
+    "VA5TU3k2mNHIjj-9",
+    "JSdbdfI6y9MlT7xN",
+    "GDS-9uuQWecmODc1"
+  ]
+}
