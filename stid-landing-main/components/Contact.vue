@@ -25,13 +25,13 @@
           </h5>
 
           <form
-            action="https://stid.us12.list-manage.com/subscribe/post?u=a2193978cf6e4420e40ea0793&amp;id=7cefdaea3e&amp;f_id=001646e0f0"
-            method="post"
-            target="_blank"
-            @submit="onSubmit"
+            @submit.prevent="onSubmit"
+            action="https://us22.list-manage.com/subscribe/post-json?u=debf8233b53615f787c8bbfad&id=748934c1cb4443d4281c30073cad3dd9&c=?"
+            method="POST"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
             class="validate"
+            target="_blank"
           >
             <div class="flex gap-[10px] mobile:block">
               <div class="input w-1/2 mobile:w-full">
@@ -42,8 +42,8 @@
                   pattern=".{2,}"
                   title="Minimum 2 characters"
                   placeholder="Your name"
-                  name="FNAME"
                   v-model="name"
+                  name="FNAME"
                 />
               </div>
               <div class="input w-1/2 mobile:w-full mobile:mt-[20px]">
@@ -53,9 +53,9 @@
                   required
                   pattern=".{2,}"
                   title="Minimum 2 characters"
-                  name="LNAME"
                   v-model="company"
                   placeholder="Your company name"
+                  name="LNAME"
                 />
               </div>
             </div>
@@ -66,8 +66,8 @@
                   type="email"
                   required
                   placeholder="Your email address"
-                  name="EMAIL"
                   v-model="email"
+                  name="EMAIL"
                 />
               </div>
             </div>
@@ -77,13 +77,14 @@
                   class="montserratRegular"
                   required
                   placeholder="Describe"
-                  name="MESSAGE"
                   v-model="message"
+                  name="MMERGE5"
                 ></textarea>
               </div>
             </div>
             <div class="flex mt-[20px] mb-[20px]">
               <CtaButton
+                @submit="onSubmit"
                 type="submit"
                 :isText="true"
                 :isWhite="false"
@@ -118,6 +119,7 @@ import Scroll from "../utils/scroll/Scroll.js";
 import Cross from "./sub/Cross.vue";
 import CtaButton from "./sub/CtaButton.vue";
 import CtaIcon from "./sub/CtaIcon.vue";
+
 const bus = useBus();
 
 export default {
@@ -139,13 +141,34 @@ export default {
     close() {
       bus.emit("closeContact");
     },
-    onSubmit(e) {
-      e.preventDefault();
-      this.sendEmail(this.email, this.name, this.company, this.message);
-    },
-    async sendEmail(email, name, company, message) {
-      // Mailchimp will handle the email sending process
+    onSubmit() {
       this.success = true;
+    },
+    loadMailchimpScript() {
+      const script = document.createElement("script");
+      script.src =
+        "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js";
+      script.type = "text/javascript";
+      script.onload = () => {
+        (function ($) {
+          window.fnames = new Array();
+          window.ftypes = new Array();
+          fnames[0] = "EMAIL";
+          ftypes[0] = "email";
+          fnames[1] = "FNAME";
+          ftypes[1] = "text";
+          fnames[2] = "LNAME";
+          ftypes[2] = "text";
+          fnames[3] = "ADDRESS";
+          ftypes[3] = "address";
+          fnames[4] = "PHONE";
+          ftypes[4] = "phone";
+          fnames[5] = "MMERGE5";
+          ftypes[5] = "text";
+        })(jQuery);
+        window.$mcj = jQuery.noConflict(true);
+      };
+      document.head.appendChild(script);
     },
   },
   mounted() {
@@ -158,6 +181,7 @@ export default {
       this.scroll.lock(false);
       this.show = false;
     });
+    this.loadMailchimpScript();
   },
   beforeUnmount() {
     window.removeEventListener("hashchange", this.handleHashChange);
@@ -294,15 +318,5 @@ export default {
 .show-enter-from .contact__fullbg,
 .show-leave-to .contact__fullbg {
   opacity: 0;
-}
-
-.show-enter-to .inner,
-.show-leave-from .inner {
-  transform: translateX(0);
-  opacity: 1;
-}
-.show-enter-to .contact__fullbg,
-.show-leave-from .contact__fullbg {
-  opacity: 1;
 }
 </style>
