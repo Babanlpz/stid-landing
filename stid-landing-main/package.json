@@ -21,10 +21,12 @@
     "embla-carousel-vue": "^7.1.0",
     "events": "^3.3.0",
     "gsap": "file:assets/scripts/vendors/gsap/npm-install-this/gsap-bonus.tgz",
+    "nuxi": "^3.11.1",
     "postprocessing": "^6.30.1",
     "sass": "^1.60.0",
     "stats.js": "^0.17.0",
     "three": "^0.150.1",
+    "upgrade": "^1.1.0",
     "vuex": "^4.0.2"
   }
 }
