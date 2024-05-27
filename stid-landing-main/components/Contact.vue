@@ -170,6 +170,12 @@ export default {
       };
       document.head.appendChild(script);
     },
+    openMailchimpForm() {
+      window.open(
+        "https://us22.list-manage.com/subscribe/post-json?u=debf8233b53615f787c8bbfad&id=748934c1cb4443d4281c30073cad3dd9&c=?",
+        "_blank"
+      );
+    },
   },
   mounted() {
     this.$refs.cross.intersect(true, 0);
