@@ -124,7 +124,7 @@ const ease = ref();
 const timeouts = ref();
 const textArray = ref([
   {
-    text: "proximity first",
+    text: "partners first",
     class: "textTitle",
     goRight: false,
   },
